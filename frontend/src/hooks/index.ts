@@ -7,10 +7,18 @@ export const useBlogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get(`${BACKEND_URL}/api/v1/blog/bulk`).then((response) => {
-      setBlogs(response.data);
-      setLoading(false);
-    });
+    const token = localStorage.getItem("token");
+
+    axios
+      .get(`${BACKEND_URL}/api/v1/blog/bulk`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setBlogs(response.data);
+        setLoading(false);
+      });
   }, []);
 
   return {

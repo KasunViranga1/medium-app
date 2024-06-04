@@ -89,6 +89,30 @@ blogRouter.put("/", async (c) => {
   });
   return c.json({ message: "blog updated" });
 });
+// we need to add pagination here
+
+blogRouter.get("/bulk", async (c) => {
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL,
+  }).$extends(withAccelerate());
+
+  //   we dont need a a body here as we need to return all the blogs
+
+  const blogs = await prisma.blog.findMany({
+    select: {
+      title: true,
+      content: true,
+      id: true,
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
+
+  return c.json({ blogs });
+});
 
 blogRouter.get("/:id", async (c) => {
   const prisma = new PrismaClient({
@@ -109,18 +133,4 @@ blogRouter.get("/:id", async (c) => {
       message: "Error while fetching blog post",
     });
   }
-});
-
-// we need to add pagination here
-
-blogRouter.get("/bulk", async (c) => {
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env.DATABASE_URL,
-  }).$extends(withAccelerate());
-
-  //   we dont need a a body here as we need to return all the blogs
-
-  const blogs = await prisma.blog.findMany();
-
-  return c.json({ blogs });
 });

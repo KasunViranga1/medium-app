@@ -15,6 +15,8 @@ dist/
 node_modules/
 .wrangler
 
+# Ignore the wrangler.toml file
+wrangler.toml
 
 # env
 .env
