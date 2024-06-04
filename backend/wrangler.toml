@@ -2,5 +2,5 @@ name = "medium"
 compatibility_date = "2023-12-01"
 
  [vars]
- DATABASE_URL=""
- JWT_SECRET =""
+ DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNjY1MTc3M2EtYzFlMi00ODM3LWJlNzAtYzViMTUzYWI5YjFmIiwidGVuYW50X2lkIjoiZWJjZGRhOGJjZmJlNTJkYzhlZWQ3NmZhZDBhNjA5NWJiYmE5Y2RlNjE3NjFkNzYxNTk2YTk1NDE3YjhmNTM5OSIsImludGVybmFsX3NlY3JldCI6IjEwNmJiZDNkLWE1MDEtNDc2YS1hZmIyLTdkZDk1NWVjYzcxZSJ9._pR7GWVrU4VUCJxmb-jACXbLXA8dvV9qvuxIZSQLT88"
+ JWT_SECRET ="mySecretPassword"
